@@ -18,9 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from restapp.views import TaskViewSet
+from restapp import views
 
-router = routers.DefaultRouter()
+#router = routers.DefaultRouter()
+router = routers.SimpleRouter()
+
 router.register(r'task', TaskViewSet)
+router.register(r'due_task', views.DueTaskViewSet)
+router.register(r'completed_task', views.CompletedTaskViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
